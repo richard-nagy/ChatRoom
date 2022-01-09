@@ -23,10 +23,13 @@ export default function App() {
 	);
 
 	const sendMessage = async () => {
-		const collectionRef = collection(db, "messages");
-		const payload = { username: username, text: text, color: color, date: new Date() };
-		const docRef = await addDoc(collectionRef, payload);
-		console.log("id: " + docRef.id);
+		if (!(text.match(/^\s*$/) || []).length > 0) {
+			document.getElementById("textarea").value = "";
+			const collectionRef = collection(db, "messages");
+			const payload = { username: username, text: text, color: color, date: new Date() };
+			const docRef = await addDoc(collectionRef, payload);
+			console.log("id: " + docRef.id);
+		}
 	};
 
 	function setUserInfo(name, color) {
@@ -56,7 +59,19 @@ export default function App() {
 					))}
 				</div>
 
-				<textarea onChange={(e) => (text = e.target.value)} />
+				<textarea
+					id="textarea"
+					placeholder="Aa"
+					onKeyPress={(e) => {
+						if (e.key === "Enter" && e.key) {
+							e.preventDefault();
+							sendMessage();
+						}
+					}}
+					onChange={(e) => {
+						text = e.target.value;
+					}}
+				/>
 				<div id="sendButton" onClick={() => sendMessage()}>
 					🕊️
 				</div>
