@@ -15,7 +15,7 @@ function App() {
 			onSnapshot(collection(db, "messages"), (snapshot) => {
 				console.log(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
 				console.log(snapshot.docs.map((doc) => doc.data().text));
-				setMessage(snapshot.docs.map((doc) => doc.data()));
+				setMessage(snapshot.docs.map((doc) => doc.data()).sort((a, b) => a.date - b.date));
 			}),
 		[]
 	);
