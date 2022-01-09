@@ -28,24 +28,17 @@ function App() {
 	};
 
 	return (
-		<div className="App">
-			<h3>Messages:</h3>
+		<div className="app">
 			{message.map((item, key) => (
 				<p key={key}>
-					{item.username}: {item.text}
+					[{item.username}]: {item.text}
 				</p>
 			))}
-			<br />
-			Username:
-			<br />
-			<input type="text" onChange={(e) => (username = e.target.value)} />
-			<br />
-			Text:
-			<br />
-			<input type="text" onChange={(e) => (text = e.target.value)}></input>
-			<br />
-			<br />
-			<button onClick={() => handleNew()}>teszt</button>
+			{/* <input type="text" onChange={(e) => (username = e.target.value)} /> */}
+			<textarea onChange={(e) => (text = e.target.value)} />
+			<div id="sendButton" onClick={() => console.log("y")}>
+				🕊️
+			</div>
 		</div>
 	);
 }

@@ -1,6 +1,49 @@
-.App {
+.app {
+	font-family: Roboto;
+	max-width: 780px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: var(--darkBlue);
+	border-radius: 20px;
 	padding: 10px;
+	color: white;
+	height: 100%;
 }
 
-.App p {
+.app p {
+	margin: 10px 20px 10px 20px;
+}
+
+.app textarea {
+	background-color: var(--blue);
+	border-radius: 20px;
+	resize: none;
+	border: none;
+	color: white;
+	height: 20px;
+	padding: 5px 15px 5px 15px;
+	margin: 0;
+	font-size: 16px;
+	width: 680px;
+	font-family: Roboto;
+}
+
+.app textarea:focus {
+	outline: none;
+}
+
+#sendButton {
+	float: right;
+	font-size: 22px;
+	width: 60px;
+	height: 30px;
+	transform: scale(-1, 1);
+	cursor: pointer;
+	text-align: center;
+	transition: 0.5s;
+	border-radius: 20px;
+}
+
+#sendButton:hover {
+	background-color: var(--blue);
 }

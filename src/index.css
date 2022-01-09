@@ -1,4 +1,11 @@
+:root {
+	--blue: #1b252f;
+	--darkBlue: #141c23;
+}
+
 html,
 body {
 	margin: 0;
+	padding: 0;
+	background-color: var(--blue);
 }
