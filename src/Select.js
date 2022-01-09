@@ -45,7 +45,7 @@ export default function Select({ setUserInfo }) {
 							setUserInfo(name, color);
 						} else
 							alert(
-								"Error!\n\nUsername must:\n- Be between 4-20 characters\n- Contain only characters of the english alphabet or numbers"
+								"Error!\n\nUsername must:\n- Be between 3-20 characters\n- Contain only characters of the english alphabet or numbers"
 							);
 					}}
 				>
