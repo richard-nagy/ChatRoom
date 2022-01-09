@@ -13,7 +13,7 @@ export default function Select({ setUserInfo }) {
 			};
 		}
 
-		const colors = ["red", "green", "blue", "orange"];
+		const colors = ["red", "orange", "green", "blue", "purple", "pink"];
 
 		let elements = [];
 

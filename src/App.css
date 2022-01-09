@@ -33,7 +33,7 @@
 .icon {
 	height: 50px;
 	width: 50px;
-	background-color: red;
+	/* background-color: red; */
 	border-radius: 100%;
 	margin-right: 10px;
 	float: left;
