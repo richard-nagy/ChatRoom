@@ -1,13 +1,16 @@
 import "./App.css";
 
+import Select from "./Select";
+
 import { onSnapshot, collection, addDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import db from "./firebase";
 
-function App() {
+export default function App() {
 	const [message, setMessage] = useState([]);
+	const [username, setUserName] = useState("");
 
-	let username = "";
+	let color = "";
 	let text = "";
 
 	useEffect(
@@ -26,30 +29,36 @@ function App() {
 		console.log("id: " + docRef.id);
 	};
 
-	return (
-		<div className="app">
-			<div className="messages">
-				{message.map((item, key) => (
-					<div className="message" key={key}>
-						<div className="icon" />
-						<div className="messageTexts">
-							<div className="username">{item.username}</div>
-							<div className="time">
-								{item.date.toDate().toString().substring(0, 24)}
-							</div>
-							<div className="text">{item.text}</div>
-						</div>
-					</div>
-				))}
-			</div>
+	function setUserInfo(name, color) {
+		setUserName(name);
+		color = color;
+		console.log(name);
+	}
 
-			{/* <input type="text" onChange={(e) => (username = e.target.value)} /> */}
-			<textarea onChange={(e) => (text = e.target.value)} />
-			<div id="sendButton" onClick={() => console.log("succes")}>
-				🕊️
+	return (
+		<>
+			{username === "" && <Select setUserInfo={setUserInfo} />}
+			<div className="app">
+				<div className="messages">
+					{message.map((item, key) => (
+						<div className="message" key={key}>
+							<div className="icon" />
+							<div className="messageTexts">
+								<div className="username">{item.username}</div>
+								<div className="time">
+									{item.date.toDate().toString().substring(0, 24)}
+								</div>
+								<div className="text">{item.text}</div>
+							</div>
+						</div>
+					))}
+				</div>
+
+				<textarea onChange={(e) => (text = e.target.value)} />
+				<div id="sendButton" onClick={() => handleNew()}>
+					🕊️
+				</div>
 			</div>
-		</div>
+		</>
 	);
 }
-
-export default App;
