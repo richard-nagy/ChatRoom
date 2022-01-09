@@ -39,7 +39,18 @@ export default function Select({ setUserInfo }) {
 					placeholder="Enter Name"
 					onChange={(e) => (name = e.target.value)}
 				></input>
-				<button onClick={() => setUserInfo(name, color)}>Let's Go</button>
+				<button
+					onClick={() => {
+						if (/^([a-z0-9]{5,20})$/.test(name)) {
+							setUserInfo(name, color);
+						} else
+							alert(
+								"Error!\n\nUsername must:\n- Be between 3-20 characters\n- Contain only characters of the english alphabet or numbers"
+							);
+					}}
+				>
+					Let's Go
+				</button>
 			</div>
 		</div>
 	);

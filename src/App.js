@@ -22,7 +22,7 @@ export default function App() {
 		[]
 	);
 
-	const handleNew = async () => {
+	const sendMessage = async () => {
 		const collectionRef = collection(db, "messages");
 		const payload = { username: username, text: text, color: color, date: new Date() };
 		const docRef = await addDoc(collectionRef, payload);
@@ -57,7 +57,7 @@ export default function App() {
 				</div>
 
 				<textarea onChange={(e) => (text = e.target.value)} />
-				<div id="sendButton" onClick={() => handleNew()}>
+				<div id="sendButton" onClick={() => sendMessage()}>
 					🕊️
 				</div>
 			</div>
