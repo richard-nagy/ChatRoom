@@ -41,11 +41,11 @@ export default function Select({ setUserInfo }) {
 				></input>
 				<button
 					onClick={() => {
-						if (/^([a-z0-9]{5,20})$/.test(name)) {
+						if (/^([a-z0-9]{3,20})$/.test(name)) {
 							setUserInfo(name, color);
 						} else
 							alert(
-								"Error!\n\nUsername must:\n- Be between 3-20 characters\n- Contain only characters of the english alphabet or numbers"
+								"Error!\n\nUsername must:\n- Be between 4-20 characters\n- Contain only characters of the english alphabet or numbers"
 							);
 					}}
 				>
