@@ -14,7 +14,6 @@ function App() {
 		() =>
 			onSnapshot(collection(db, "messages"), (snapshot) => {
 				console.log(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-				console.log(snapshot.docs.map((doc) => doc.data().text));
 				setMessage(snapshot.docs.map((doc) => doc.data()).sort((a, b) => a.date - b.date));
 			}),
 		[]
@@ -29,14 +28,24 @@ function App() {
 
 	return (
 		<div className="app">
-			{message.map((item, key) => (
-				<p key={key}>
-					[{item.username}]: {item.text}
-				</p>
-			))}
+			<div className="messages">
+				{message.map((item, key) => (
+					<div className="message" key={key}>
+						<div className="icon" />
+						<div className="messageTexts">
+							<div className="username">{item.username}</div>
+							<div className="time">
+								{item.date.toDate().toString().substring(0, 24)}
+							</div>
+							<div className="text">{item.text}</div>
+						</div>
+					</div>
+				))}
+			</div>
+
 			{/* <input type="text" onChange={(e) => (username = e.target.value)} /> */}
 			<textarea onChange={(e) => (text = e.target.value)} />
-			<div id="sendButton" onClick={() => console.log("y")}>
+			<div id="sendButton" onClick={() => console.log("succes")}>
 				🕊️
 			</div>
 		</div>

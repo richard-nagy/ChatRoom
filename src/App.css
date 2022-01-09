@@ -10,8 +10,49 @@
 	height: 100%;
 }
 
-.app p {
-	margin: 10px 20px 10px 20px;
+.messages {
+	margin-bottom: 10px;
+}
+
+.message {
+	padding: 10px;
+}
+
+.message div:nth-child(3) {
+	width: 100%;
+}
+
+.messageTexts {
+	display: flex;
+	flex-direction: row;
+	gap: 2px;
+	flex-wrap: wrap;
+	margin-top: 3px;
+}
+
+.icon {
+	height: 50px;
+	width: 50px;
+	background-color: red;
+	border-radius: 100%;
+	margin-right: 10px;
+	float: left;
+}
+
+.time {
+	font-size: 10px;
+	color: gray;
+	padding: 5px 0 0 10px;
+}
+
+.username {
+	color: white;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.text {
+	color: lightgray;
 }
 
 .app textarea {
@@ -22,7 +63,6 @@
 	color: white;
 	height: 20px;
 	padding: 5px 15px 5px 15px;
-	margin: 0;
 	font-size: 16px;
 	width: 680px;
 	font-family: Roboto;
