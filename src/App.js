@@ -39,6 +39,10 @@ export default function App() {
 		<>
 			{username === "" && <Select setUserInfo={setUserInfo} />}
 			<div className="app">
+				<div className="topBar">
+					<div>ChatRoom 1.0</div>
+					<a href="https://github.com/richard-nagy/ChatRoom">GitGub</a>
+				</div>
 				<div className="messages">
 					{message.map((item, key) => (
 						<div className="message" key={key}>
