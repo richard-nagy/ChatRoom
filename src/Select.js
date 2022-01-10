@@ -40,8 +40,9 @@ export default function Select({ setUserInfo }) {
 	}
 
 	return (
-		<div className="select">
-			<div className="options">
+		<>
+			<div className="overlay" />
+			<div className="select">
 				<div className="colors">{circle()}</div>
 				<input
 					type="text"
@@ -62,6 +63,6 @@ export default function Select({ setUserInfo }) {
 					Let's Go
 				</button>
 			</div>
-		</div>
+		</>
 	);
 }

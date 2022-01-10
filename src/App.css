@@ -6,13 +6,13 @@
 	padding: 10px;
 	color: white;
 	height: 90%;
-	z-index: -1;
+	min-width: 320px;
 	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%);
-
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
 }
 
 .messages {
@@ -72,7 +72,7 @@ textarea {
 	height: 20px;
 	padding: 5px 15px 5px 15px;
 	font-size: 16px;
-	width: 680px;
+	width: calc(100% - 100px);
 	font-family: Roboto;
 	transition: 0.5s;
 	border: 2px solid var(--darkBlue);
@@ -99,22 +99,4 @@ textarea:focus {
 
 #sendButton:hover {
 	background-color: var(--lightBlue);
-}
-
-::-webkit-scrollbar {
-	width: 10px;
-	height: 10px;
-}
-
-::-webkit-scrollbar-track {
-	background: inherit;
-}
-
-::-webkit-scrollbar-thumb {
-	background: var(--lightBlue);
-	border-radius: 20px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-	background: var(--lightBlue);
 }

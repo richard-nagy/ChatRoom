@@ -1,12 +1,39 @@
 :root {
 	--blue: #1b252f;
 	--darkBlue: #141c23;
-	--lightBlue: #2A3947;
+	--lightBlue: #2a3947;
 }
 
 html,
 body {
+	height: 100%;
+	width: 100%;
 	margin: 0;
 	padding: 0;
 	background-color: var(--blue);
+	overflow-x: auto;
+	overflow-y: hidden;
+}
+
+#root {
+	height: calc(100vh - 10px);
+	height: 100vh;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background: inherit;
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--lightBlue);
+	border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--lightBlue);
 }
