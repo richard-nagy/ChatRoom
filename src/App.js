@@ -2,31 +2,43 @@ import "./App.css";
 
 import Select from "./Select";
 
-import { onSnapshot, collection, addDoc } from "firebase/firestore";
+import { onSnapshot, collection, addDoc, deleteDoc, doc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import db from "./firebase";
 
 export default function App() {
-	const [message, setMessage] = useState([]);
+	const [messages, setMessages] = useState([]);
 	const [username, setUserName] = useState("");
 	const [color, setColor] = useState("red");
 
 	let text = "";
 
-	useEffect(
-		() =>
-			onSnapshot(collection(db, "messages"), (snapshot) => {
-				setMessage(snapshot.docs.map((doc) => doc.data()).sort((a, b) => b.date - a.date));
-			}),
-		[]
-	);
+	useEffect(() => {
+		onSnapshot(collection(db, "messages"), (snapshot) => {
+			setMessages(
+				snapshot.docs
+					.map((doc) => ({
+						...doc.data(),
+						id: doc.id,
+					}))
+					.sort((a, b) => b.date - a.date)
+			);
+		});
+	}, []);
 
 	const sendMessage = async () => {
 		if (!(text.match(/^\s*$/) || []).length > 0) {
 			document.getElementById("textarea").value = "";
 			const collectionRef = collection(db, "messages");
 			const payload = { username: username, text: text, color: color, date: new Date() };
-			const docRef = await addDoc(collectionRef, payload);
+			await addDoc(collectionRef, payload);
+
+			(async () => {
+				if (messages.length > 15) {
+					const docRef = doc(db, "messages", messages[messages.length - 1].id);
+					await deleteDoc(docRef);
+				}
+			})();
 		}
 	};
 
@@ -41,10 +53,10 @@ export default function App() {
 			<div className="app">
 				<div className="topBar">
 					<div>ChatRoom 1.0</div>
-					<a href="https://github.com/richard-nagy/ChatRoom">GitGub</a>
+					<a href="https://github.com/richard-nagy/ChatRoom">GitHub</a>
 				</div>
 				<div className="messages">
-					{message.map((item, key) => (
+					{messages.map((item, key) => (
 						<div className="message" key={key}>
 							<div className="icon" style={{ backgroundColor: item.color }} />
 							<div className="messageTexts">
