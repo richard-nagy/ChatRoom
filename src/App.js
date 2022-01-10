@@ -16,8 +16,7 @@ export default function App() {
 	useEffect(
 		() =>
 			onSnapshot(collection(db, "messages"), (snapshot) => {
-				console.log(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-				setMessage(snapshot.docs.map((doc) => doc.data()).sort((a, b) => a.date - b.date));
+				setMessage(snapshot.docs.map((doc) => doc.data()).sort((a, b) => b.date - a.date));
 			}),
 		[]
 	);
@@ -28,14 +27,12 @@ export default function App() {
 			const collectionRef = collection(db, "messages");
 			const payload = { username: username, text: text, color: color, date: new Date() };
 			const docRef = await addDoc(collectionRef, payload);
-			console.log("id: " + docRef.id);
 		}
 	};
 
 	function setUserInfo(name, color) {
 		setUserName(name);
 		setColor(color);
-		console.log(name);
 	}
 
 	return (
