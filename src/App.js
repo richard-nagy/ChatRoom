@@ -56,7 +56,7 @@ export default function App() {
 			{username === "" && <Select setUserInfo={setUserInfo} />}
 			<div className="app">
 				<div className="topBar">
-					<div>ChatRoom 1.0</div>
+					<div>Chat Room 1.0</div>
 					<a href="https://github.com/richard-nagy/ChatRoom">GitHub</a>
 				</div>
 				<div className="messages">
