@@ -10,7 +10,7 @@ To create this project, the main tools and technologies I used are:
 -  [Firebase Firestore](https://firebase.google.com/docs/firestore): Database provider and  backend
 - [Figma](https://www.figma.com/): A design tool where I created my [design plans](https://www.figma.com/proto/ij97OXAdQyjKWBcM3Z70KK/Chat-Room?node-id=27%3A47&scaling=min-zoom&page-id=27%3A46)
 - CSS: Styling of the website
-- [GitHub](https://github.com/): The [develop branch](https://github.com/richard-nagy/ChatRoom/tree/develop) for working and the [main branch](https://github.com/richard-nagy/ChatRoom/tree/main) for relase
+- [GitHub](https://github.com/): The [develop branch](https://github.com/richard-nagy/ChatRoom/tree/develop) for working and the [main branch](https://github.com/richard-nagy/ChatRoom/tree/main) for release
 - [GitHub Pages](https://pages.github.com/): Implement a [live version of the website](https://richard-nagy.github.io/ChatRoom/) 
 
 ### Features
