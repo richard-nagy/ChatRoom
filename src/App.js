@@ -1,7 +1,5 @@
 import "./App.css";
-
 import Select from "./Select";
-
 import { onSnapshot, collection, addDoc, deleteDoc, doc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import db from "./firebase";
@@ -10,9 +8,9 @@ export default function App() {
 	const [messages, setMessages] = useState([]);
 	const [username, setUserName] = useState("");
 	const [color, setColor] = useState("red");
-
 	let text = "";
 
+	// Get all the messages from Firestore
 	useEffect(() => {
 		onSnapshot(collection(db, "messages"), (snapshot) => {
 			setMessages(
@@ -26,9 +24,13 @@ export default function App() {
 		});
 	}, []);
 
+	// Upload message to Firestore
+	// Don't send it if the message is empty or only contains space characters
+	// If the total number of messages is more then 15, delete the oldest one
 	const sendMessage = async () => {
 		if (!(text.match(/^\s*$/) || []).length > 0) {
 			document.getElementById("textarea").value = "";
+
 			const collectionRef = collection(db, "messages");
 			const payload = { username: username, text: text, color: color, date: new Date() };
 			await addDoc(collectionRef, payload);
@@ -42,6 +44,8 @@ export default function App() {
 		}
 	};
 
+	// Function sent to the Select component
+	// Gets the choosen color and name
 	function setUserInfo(name, color) {
 		setUserName(name);
 		setColor(color);
@@ -76,7 +80,7 @@ export default function App() {
 					id="textarea"
 					placeholder="Aa"
 					onKeyPress={(e) => {
-						if (e.key === "Enter" && e.key) {
+						if (e.key === "Enter") {
 							e.preventDefault();
 							sendMessage();
 						}
